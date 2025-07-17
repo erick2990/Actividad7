@@ -18,13 +18,14 @@ class estudiante: #nombre del objeto estudiante
 
 class curso:
 
-    def __init__(self, nota_tarea, nota_parcial, nota_proyecto):
+    def __init__(self,nombre, nota_tarea, nota_parcial, nota_proyecto):
+        self.nombre = nombre
         self.tarea = nota_tarea
         self.parcial = nota_parcial
         self.proyecto = nota_proyecto
 
     def mostrar_datoscurso(self):
-        print(f'Notas:\nTareas:{self.tarea} Parcial:{self.parcial} Proyecto:{self.proyecto}')
+        print(f'Notas {self.nombre}:\nTareas:{self.tarea} Parcial:{self.parcial} Proyecto:{self.proyecto}')
 
 
 def registro_estudiante():
@@ -39,14 +40,15 @@ def registro_estudiante():
     cursos = {} #se crea un diccionario vacio para este objeto y posterior se llenan
 
     for i in range(cantidad_cursos):
-        nombre_curso = input(f'Ingrese el nombre del {i+1} curso: ')
-        nota_tarea = float(input('Ingrese la nota de tareas: '))
-        nota_parcial = float(input('Ingrese la nota de parcial: '))
-        nota_proyecto = float(input('Ingrese la nota del proyecto: '))
-        curso_tmp = curso(nota_tarea, nota_parcial, nota_proyecto)
+        id_curso = input(f'Ingrese el CODIGO del {i+1} curso: ')
+        nombre_curso = input(f'Ingrese el NOMBRE del {i+1} curso: ')
+        nota_tarea = float(input('Ingrese la NOTA de tareas: '))
+        nota_parcial = float(input('Ingrese la NOTA de parcial: '))
+        nota_proyecto = float(input('Ingrese la NOTA del proyecto: '))
+        curso_tmp = curso(nombre_curso, nota_tarea, nota_parcial, nota_proyecto)
         print('\n')
-        cursos[nombre_curso] = {
-            "Notas" : curso_tmp
+        cursos[id_curso] = {
+            "Notas" : curso_tmp #Se añade un nuevo curso cada que se ingresan nuevos datos su llave sera siempre su ID
         }
 
     estudiantes[carnet] = {
@@ -60,9 +62,11 @@ def mostrar_info():
     print('\t\t\tInformacion de los estudiantes:')
     for  llave, campo1 in estudiantes.items():
         campo1["Estudiante"].mostrar_estudiante()
-        for nombre_Curso, datos_curso in campo1["Cursos"].items():
-            print(f'Curso: {nombre_Curso}')
+        for id, datos_curso in campo1["Cursos"].items():
+            print(f'Codigo Curso: {id}')
             datos_curso["Notas"].mostrar_datoscurso()
+
+def buscar_estudiante():
 
 
 
