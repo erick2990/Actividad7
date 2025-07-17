@@ -67,6 +67,15 @@ def mostrar_info():
             datos_curso["Notas"].mostrar_datoscurso()
 
 def buscar_estudiante():
+    buscar_carnet = input('Ingrese el numero de carnet que desea buscar: ')
+    for llave, campo in estudiantes.items():
+        if buscar_carnet ==llave:
+            print('Se encontro el carnet')
+            campo["Estudiante"].mostrar_estudiante()
+            for id, datos in campo["Cursos"].items(): #Campo referencia al contenido que hay en cursos
+                datos["Notas"].mostrar_datoscurso() #se accede por medio de las llaves y se muestra el contenido de notas
+        else:
+            print('No existe el carnet')
 
 
 
@@ -89,6 +98,7 @@ while fin_menu:
 
         case 3:
             print('Buscar estudiantes')
+            buscar_estudiante()
 
         case 4:
             print('Gracias por usar el sistema :) ')
