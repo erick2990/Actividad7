@@ -59,14 +59,10 @@ def registro_estudiante():
 def mostrar_info():
     print('\t\t\tInformacion de los estudiantes:')
     for  llave, campo1 in estudiantes.items():
-        print(f'{campo1['estudiante_ingreso'].mostrar_estudiante()}')
-        print('\n')
-        for name, campo2 in campo1['Cursos'].items():
-            print(f'{campo1['estudiante_ingreso']['campo2']}')
-            print('\n')
-
-
-
+        campo1["Estudiante"].mostrar_estudiante()
+        for nombre_Curso, datos_curso in campo1["Cursos"].items():
+            print(f'Curso: {nombre_Curso}')
+            datos_curso["Notas"].mostrar_datoscurso()
 
 
 
